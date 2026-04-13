@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dídac Gallego Pérez — Tècnic Informàtic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f9f7;
+      --surface: #ffffff;
+      --border: #e8e8e4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --accent: #1a1a2e;
+      --accent-soft: #f0f0f8;
+      --tag-bg: #efefeb;
+      --radius: 16px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(249,249,247,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--text);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .btn-secondary:hover { border-color: var(--text); transform: translateY(-1px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 48px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .about-text {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .stat-item {
+      background: var(--surface);
+      padding: 32px 28px;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* EXPERIENCE */
+    #experience { border-top: 1px solid var(--border); }
+
+    .exp-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .exp-item {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      transition: box-shadow var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    .exp-item:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+
+    .exp-date {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      padding-top: 4px;
+    }
+
+    .exp-company {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .exp-role {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .exp-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      background: var(--tag-bg);
+      border-radius: 100px;
+      padding: 5px 14px;
+    }
+
+    /* PROJECTS */
+    #projects { border-top: 1px solid var(--border); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+    }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 22px;
+    }
+
+    .project-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .project-visual {
+      background: var(--accent-soft);
+      border-radius: 12px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+    }
+
+    /* SKILLS */
+    #skills { border-top: 1px solid var(--border); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .skill-group-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skill-item {
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* CONTACT */
+    #contact { border-top: 1px solid var(--border); }
+
+    .contact-inner {
+      background: var(--accent);
+      border-radius: 24px;
+      padding: 80px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .contact-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 500;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .contact-inner p {
+      font-size: 16px;
+      opacity: 0.6;
+      margin-bottom: 48px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .contact-link:hover { opacity: 0.8; transform: translateY(-2px); }
+
+    .contact-link.light {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    .contact-link.white {
+      background: #fff;
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 48px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero, section { padding-left: 24px; padding-right: 24px; }
+      .hero { padding-top: 100px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .exp-item { grid-template-columns: 1fr; gap: 8px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .contact-inner { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Dídac Gallego</a>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre mi</a></li>
+      <li><a href="#experience">Experiència</a></li>
+      <li><a href="#projects">Projectes</a></li>
+      <li><a href="#skills">Habilitats</a></li>
+      <li><a href="#contact">Contacte</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div style="position:relative;">
+    <div class="hero">
+      <p class="hero-eyebrow">Tècnic Informàtic · Barcelona</p>
+      <h1>Dídac<br>Gallego <em>Pérez</em></h1>
+      <p class="hero-desc">Especialitzat en infraestructures crítiques i entorns hospitalaris. Més de 2.100 incidències resoltes en 6 centres hospitalaris.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">Veure projectes →</a>
+        <a href="#contact" class="btn-secondary">Contactar</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+      Scroll
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label reveal">Sobre mi</p>
+    <div class="about-grid">
+      <div>
+        <h2 class="about-title reveal">Tecnologia, criteri i ganes d'aprendre.</h2>
+        <p class="about-text reveal">Tècnic Informàtic especialitzat en infraestructures crítiques, amb experiència directa en el sector sanitari gestionant més de 2.100 incidències en 6 centres hospitalaris.</p>
+        <p class="about-text reveal">Em caracteritzo per una actitud proactiva, capacitat d'adaptació en entorns exigents i un compromís genuí amb l'aprenentatge i la tecnologia. Experiència internacional gràcies a l'Erasmus a Milà, Itàlia.</p>
+      </div>
+      <div class="stats-grid reveal">
+        <div class="stat-item">
+          <div class="stat-number">2.100+</div>
+          <div class="stat-label">Incidències resoltes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Centres hospitalaris</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Graus cursats</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Idiomes nadius</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label reveal">Experiència</p>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-date">Maig 2025 — Març 2026</div>
+        </div>
+        <div>
+          <div class="exp-company">Grup Hospitalari · Catalunya</div>
+          <div class="exp-role">Tècnic Informàtic (Dep. Informàtica Hospitalària)</div>
+          <p class="exp-desc">Gestió i resolució d'incidències informàtiques en entorns hospitalaris d'alta disponibilitat. Suport presencial en diversos centres, amb cobertura a 6 hospitals de la xarxa catalana.</p>
+          <div class="exp-tags">
+            <span class="tag">Windows Server</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">GLPI</span>
+            <span class="tag">Zabbix</span>
+            <span class="tag">Zimbra</span>
+            <span class="tag">Zebra / Kyocera</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-date">Març 2024 — Setembre 2024</div>
+        </div>
+        <div>
+          <div class="exp-company">Grup Hospitalari · Catalunya</div>
+          <div class="exp-role">Tècnic Informàtic (Pràctiques + Contracte)</div>
+          <p class="exp-desc">Pràctiques de Grau Mitjà (març–maig) i contracte temporal (juny–setembre). Suport tècnic presencial en entorn hospitalari, gestionant incidències de hardware, software i xarxa.</p>
+          <div class="exp-tags">
+            <span class="tag">Suport tècnic</span>
+            <span class="tag">Hardware</span>
+            <span class="tag">Networking</span>
+            <span class="tag">Velneo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-date">Maig 2023 — Juliol 2023</div>
+        </div>
+        <div>
+          <div class="exp-company">IIS Leonardo da Vinci Ripamonti · Milà, Itàlia</div>
+          <div class="exp-role">Erasmus+ — Tècnic Informàtic</div>
+          <p class="exp-desc">Dos mesos de pràctiques internacionals com a tècnic informàtic en una escola de Milà (Lago di Como), Itàlia. Experiència en entorn multilingüe i multicultural.</p>
+          <div class="exp-tags">
+            <span class="tag">Erasmus+</span>
+            <span class="tag">Internacional</span>
+            <span class="tag">Italià</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label reveal">Projectes</p>
+    <div class="projects-grid">
+
+      <div class="project-card featured reveal">
+        <div>
+          <div class="project-label">Projecte acadèmic destacat</div>
+          <h3 class="project-title">TrustIT</h3>
+          <p class="project-desc">Infraestructura de bases de dades sobre contenidors Docker, amb monitoratge en temps real, VPN segura i gestió multibase. Projecte de validació acadèmica que cobreix PostgreSQL, Oracle, Netdata i WireGuard.</p>
+          <div class="exp-tags">
+            <span class="tag">Docker</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Oracle DB</span>
+            <span class="tag">Netdata</span>
+            <span class="tag">WireGuard</span>
+            <span class="tag">Linux</span>
+          </div>
+        </div>
+        <div class="project-visual">🐳</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">🧮</div>
+        <div class="project-label">Eina web</div>
+        <h3 class="project-title">Calculadora de Subxarxes IPv4</h3>
+        <p class="project-desc">Calculadora web de subnetting IPv4 amb interfície minimalista. Càlcul automàtic de màscara, rang d'hostes, broadcast i adreces de xarxa.</p>
+        <div class="exp-tags" style="margin-top:16px;">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Networking</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon" style="background:#f0f4ff;">🔒</div>
+        <div class="project-label">Formació</div>
+        <h3 class="project-title">Fortinet NSE1 Fundamentals</h3>
+        <p class="project-desc">Curs de ciberseguretat en curs, orientat als fonaments de la seguretat en xarxes i sistemes. Complementat amb el curs de Hacking Ètic de Salesians de Sarrià (6h).</p>
+        <div class="exp-tags" style="margin-top:16px;">
+          <span class="tag">Ciberseguretat</span>
+          <span class="tag">Fortinet</span>
+          <span class="tag">Hacking Ètic</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label reveal">Habilitats tècniques</p>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Sistemes i Servidors</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>Ubuntu Server</div>
+          <div class="skill-item"><span class="skill-dot"></span>Windows Server</div>
+          <div class="skill-item"><span class="skill-dot"></span>Active Directory</div>
+          <div class="skill-item"><span class="skill-dot"></span>Docker</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Xarxes i Virtualització</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>VirtualBox</div>
+          <div class="skill-item"><span class="skill-dot"></span>Cisco Packet Tracer</div>
+          <div class="skill-item"><span class="skill-dot"></span>Switches Aruba — VLANs</div>
+          <div class="skill-item"><span class="skill-dot"></span>WireGuard VPN</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Cloud i Bases de Dades</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>AWS</div>
+          <div class="skill-item"><span class="skill-dot"></span>PostgreSQL</div>
+          <div class="skill-item"><span class="skill-dot"></span>Oracle DB</div>
+          <div class="skill-item"><span class="skill-dot"></span>Netdata</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Gestió i Monitoratge</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>GLPI</div>
+          <div class="skill-item"><span class="skill-dot"></span>Zabbix</div>
+          <div class="skill-item"><span class="skill-dot"></span>Zimbra</div>
+          <div class="skill-item"><span class="skill-dot"></span>Velneo</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Web i Programació</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>HTML / CSS</div>
+          <div class="skill-item"><span class="skill-dot"></span>JavaScript / jQuery</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Idiomes</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>Català — Natiu</div>
+          <div class="skill-item"><span class="skill-dot"></span>Castellà — Natiu</div>
+          <div class="skill-item"><span class="skill-dot"></span>Anglès — B1</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner reveal">
+      <h2>Treballem junts?</h2>
+      <p>Obert a noves oportunitats professionals i col·laboracions.</p>
+      <div class="contact-links">
+        <a href="/cdn-cgi/l/email-protection#3d5954595c5e5a5c5151585a524d584f58477d5a505c5451135e5250" class="contact-link white">✉️ <span class="__cf_email__" data-cfemail="5c3835383d3f3b3d3030393b332c392e39261c3b313d3530723f3331">[email&#160;protected]</span></a>
+        <a href="https://www.linkedin.com/in/didac-gallego" target="_blank" class="contact-link light">LinkedIn →</a>
+        <a href="tel:+34622543517" class="contact-link light">+34 622 54 35 17</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Dídac Gallego Pérez · didac-gallego-perez.github.io
+  </footer>
+
+  <script>
+    // Scroll reveal — visible by default, JS adds animation if supported
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => el.classList.add('hidden'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.remove('hidden');
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
