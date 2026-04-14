@@ -1,0 +1,738 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   RESET UNIVERSAL - Elimina estilos por defecto del navegador
+   ═══════════════════════════════════════════════════════════════════════ */
+*, *::before, *::after { 
+  box-sizing: border-box;  /* Incluye padding y border en el cálculo del ancho/alto */
+  margin: 0;              /* Elimina márgenes por defecto */
+  padding: 0;             /* Elimina rellenos por defecto */
+}
+
+/* ── VARIABLES CSS ─────────────────────────────────────────────────────
+   Definen los colores, tamaños y transiciones utilizados en todo el sitio.
+   Usar variables permite cambiar todo el diseño modificando solo estos
+   valores.
+   ────────────────────────────────────────────────────────────────────── */
+:root {
+  /* COLORES DE FONDO */
+  --bg: #f9f9f7;              /* Fondo principal (gris muy claro) */
+  --surface: #ffffff;         /* Color de superficies/tarjetas (blanco) */
+  
+  /* COLORES DE BORDES Y LÍNEAS */
+  --border: #e8e8e4;          /* Color de bordes y divisores */
+  
+  /* COLORES DE TEXTO */
+  --text: #1a1a1a;            /* Color principal del texto (negro oscuro) */
+  --muted: #6b6b6b;           /* Color para texto secundario (gris) */
+  
+  /* COLORES DE ACENTOS */
+  --accent: #1a1a2e;          /* Color de acentos principales (azul muy oscuro) */
+  --accent-soft: #f0f0f8;     /* Fondo suave para acentos (azul muy claro) */
+  --tag-bg: #efefeb;          /* Fondo de etiquetas (gris bien claro) */
+  
+  /* ESPACIADO Y FORMAS */
+  --radius: 16px;             /* Radio de esquinas redondeadas */
+  
+  /* ANIMACIONES */
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);  /* Transición suave estándar */
+}
+
+/* ── ESTILOS BASE ────────────────────────────────────────────────────
+   Estilos que afectan a los elementos HTML principales
+   ────────────────────────────────────────────────────────────────────── */
+html { 
+  scroll-behavior: smooth; /* Desplazamiento suave al hacer click en enlaces ancla */
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;   /* Fuente principal del sitio */
+  background: var(--bg);                /* Usa el color de fondo definido en variables */
+  color: var(--text);                   /* Color del texto por defecto */
+  line-height: 1.6;                     /* Espaciado entre líneas para mejor legibilidad */
+  -webkit-font-smoothing: antialiased;  /* Suaviza el renderizado del texto en navegadores webkit */
+}
+
+/* ── NAVEGACIÓN ──────────────────────────────────────────────────────
+   Barra de navegación fija en la parte superior con efecto glassmorphism
+   (fondo translúcido con desenfoque)
+   ────────────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed;              /* Se mantiene fija al hacer scroll */
+  top: 0; left: 0; right: 0;   /* Ocupa todo el ancho en la parte superior */
+  z-index: 100;                /* Se coloca encima de otros elementos */
+  display: flex;                /* Usa flexbox para alinear los elementos */
+  justify-content: space-between; /* Distribuye el ícono y menú a los extremos */
+  align-items: center;          /* Centra verticalmente */
+  padding: 0 48px;              /* Espacio interior horizontal */
+  height: 64px;                 /* Altura fija de la barra */
+  background: rgba(249,249,247,0.85);  /* Fondo semi-transparente */
+  backdrop-filter: blur(20px);  /* Efecto de desenfoque (glassmorphism) */
+  -webkit-backdrop-filter: blur(20px);  /* Mismo efecto para navegadores webkit */
+  border-bottom: 1px solid var(--border);  /* Línea divisoria inferior */
+}
+
+/* Logo/marca del sitio en la esquina izquierda */
+.nav-logo {
+  font-family: 'Playfair Display', serif;  /* Fuente elegante para el logo */
+  font-size: 18px;                         /* Tamaño visible */
+  font-weight: 500;                        /* Peso medio (ni ligero ni negrita) */
+  color: var(--text);                      /* Usa el color de texto principal */
+  text-decoration: none;                   /* Elimina el subrayado de enlaces */
+  letter-spacing: -0.3px;                  /* Reduce ligeramente el espacio entre letras */
+}
+
+/* Contenedor para los elementos del lado derecho de la nav */
+.nav-inner { 
+  display: flex;            /* Usa flexbox */
+  align-items: center;      /* Centra verticalmente */
+}
+
+/* Lista de enlaces en la navegación */
+.nav-links {
+  display: flex;            /* Coloca los enlaces en fila */
+  gap: 36px;                /* Espacio entre enlaces */
+  list-style: none;         /* Elimina los puntos de lista */
+}
+
+/* Estilo de cada enlace de navegación */
+.nav-links a {
+  font-size: 14px;                         /* Tamaño del texto */
+  font-weight: 400;                        /* Peso normal */
+  color: var(--muted);                     /* Color gris por defecto */
+  text-decoration: none;                   /* Sin subrayado */
+  transition: color var(--transition);     /* Anima el cambio de color */
+}
+
+/* Cuando pasas el mouse sobre un enlace */
+.nav-links a:hover { 
+  color: var(--text);  /* Cambia a color oscuro */
+}
+
+/* Contenedor para los botones de cambio de idioma */
+.lang-switcher {
+  display: flex;         /* Coloca los botones en fila */
+  align-items: center;   /* Centra verticalmente */
+  gap: 4px;              /* Pequeño espacio entre elementos */
+  margin-left: 24px;     /* Separa del resto de elementos */
+}
+
+/* Botones individuales de idioma */
+.lang-btn {
+  background: none;                                    /* Sin fondo */
+  border: none;                                        /* Sin borde */
+  font-size: 12px;                                     /* Texto pequeño */
+  font-weight: 600;                                    /* Fuerte/negrita */
+  color: var(--muted);                                 /* Color gris */
+  cursor: pointer;                                     /* Cambia el cursor a mano */
+  padding: 5px 9px;                                    /* Espacio interior */
+  border-radius: 8px;                                  /* Esquinas ligeramente redondeadas */
+  transition: color var(--transition), background var(--transition);  /* Anima los cambios */
+  font-family: 'DM Sans', sans-serif;                  /* Misma fuente que el sitio */
+  letter-spacing: .5px;                                /* Ligeramente más espaciado */
+}
+
+/* Cuando pasas el mouse sobre un botón de idioma */
+.lang-btn:hover { 
+  color: var(--text);  /* Cambia a color oscuro */
+}
+
+/* Estado activo del botón de idioma (idioma seleccionado) */
+.lang-btn.active { 
+  color: var(--text);        /* Color oscuro */
+  background: var(--tag-bg); /* Fondo gris claro */
+}
+
+/* Separador (línea vertical) entre idiomas */
+.lang-sep { 
+  color: var(--border);      /* Color gris claro */
+  font-size: 11px;           /* Pequeño */
+  user-select: none;         /* No se puede seleccionar el texto */
+}
+
+/* ── SECCIÓN HERO (PORTADA PRINCIPAL) ────────────────────────────────
+   La primera sección visible del sitio, ocupando toda la altura de la pantalla
+   ────────────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;         /* Como mínimo, la altura de la ventana del navegador */
+  display: flex;             /* Usa flexbox */
+  flex-direction: column;    /* Los elementos se apilan verticalmente */
+  justify-content: center;   /* Centra el contenido verticalmente */
+  padding: 120px 48px 80px;  /* Espacio: arriba mucho, lados y abajo menos */
+  max-width: 1100px;         /* Ancho máximo del contenido */
+  margin: 0 auto;            /* Centra horizontalmente */
+}
+
+/* Texto pequeño sobre el título principal */
+.hero-eyebrow {
+  font-size: 13px;             /* Muy pequeño */
+  font-weight: 500;            /* Peso medio */
+  letter-spacing: 2px;         /* Espaciado amplio entre letras */
+  text-transform: uppercase;   /* Todas las letras mayúsculas */
+  color: var(--muted);         /* Color gris */
+  margin-bottom: 24px;         /* Espacio debajo */
+}
+
+/* Título principal grande */
+.hero h1 {
+  font-family: 'Playfair Display', serif;  /* Fuente elegante */
+  /* Size fluidez: mínimo 52px, máximo 96px, responsivo al tamaño de la pantalla */
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 500;            /* Peso medio */
+  line-height: 1.05;           /* Líneas muy juntas para efecto dramático */
+  letter-spacing: -2px;        /* Reduce espacio entre letras (kern negativo) */
+  color: var(--text);          /* Color negro */
+  margin-bottom: 32px;         /* Espacio debajo */
+}
+
+/* Texto en cursiva dentro del h1 (palabras destacadas) */
+.hero h1 em { 
+  font-style: italic;          /* Pone el texto en itálica */
+  color: var(--muted);         /* Cambia a color gris */
+}
+
+/* Descripción/subtítulo de la sección hero */
+.hero-desc {
+  font-size: 18px;             /* Más grande para legibilidad */
+  font-weight: 300;            /* Muy ligero/delgado */
+  color: var(--muted);         /* Color gris */
+  max-width: 580px;            /* No demasiado ancho para que sea fácil de leer */
+  line-height: 1.7;            /* Espaciado generoso entre líneas */
+  margin-bottom: 48px;         /* Mucho espacio debajo para los botones */
+}
+
+/* Contenedor para botones de llamada a acción */
+.hero-ctas { 
+  display: flex;      /* Coloca los botones en fila */
+  gap: 16px;          /* Espacio entre botones */
+  flex-wrap: wrap;    /* Si no caben, bajan a nueva línea */
+}
+
+/* ── BOTONES - ESTILOS BASE (COMPARTIDOS) ────────────────────────────
+   Los botones tienen estilos comunes aplicados a múltiples clases
+   ────────────────────────────────────────────────────────────────────── */
+.btn-primary,
+.btn-secondary,
+.contact-link {
+  display: inline-flex;      /* Flex para alinear ícono y texto */
+  align-items: center;       /* Centra verticalmente */
+  gap: 8px;                  /* Espacio entre ícono y texto */
+  padding: 14px 28px;        /* Espacio interior */
+  border-radius: 100px;      /* Muy redondeado (forma de píldora) */
+  font-size: 14px;           /* Tamaño del texto */
+  font-weight: 500;          /* Peso medio (más marcado) */
+  text-decoration: none;     /* Sin subrayado */
+}
+
+/* BOTÓN PRIMARIO - Estilo oscuro/principal */
+.btn-primary {
+  background: var(--text);     /* Fondo negro */
+  color: #fff;                 /* Texto blanco */
+  transition: opacity var(--transition), transform var(--transition);  /* Anima */
+}
+
+/* Efecto al pasar el mouse sobre botón primario */
+.btn-primary:hover { 
+  opacity: 0.85;               /* Se vuelve ligeramente semitransparente */
+  transform: translateY(-1px); /* Sube 1px (efecto de elevación) */
+}
+
+/* BOTÓN SECUNDARIO - Estilo con borde */
+.btn-secondary {
+  background: transparent;          /* Fondo transparente */
+  color: var(--text);               /* Texto negro */
+  border: 1.5px solid var(--border);  /* Borde gris */
+  transition: border-color var(--transition), transform var(--transition);  /* Anima */
+}
+
+/* Efecto al pasar el mouse sobre botón secundario */
+.btn-secondary:hover { 
+  border-color: var(--text);  /* El borde se vuelve negro */
+  transform: translateY(-1px);  /* Sube 1px (efecto de elevación) */
+}
+
+/* ── SECCIONES PRINCIPALES ───────────────────────────────────────────
+   Estilos comunes aplicados a todas las secciones principales
+   ────────────────────────────────────────────────────────────────────── */
+section {
+  padding: 100px 48px;  /* Mucho espacio vertical, moderado horizontal */
+  max-width: 1100px;    /* Ancho máximo del contenido */
+  margin: 0 auto;       /* Centra horizontalmente */
+}
+
+/* Línea divisoria en la parte superior (excepto en About) */
+#experience, #projects, #skills, #contact {
+  border-top: 1px solid var(--border);  /* Línea gris en la parte superior */
+}
+
+/* Etiqueta de la sección (ej: "EXPERIENCIA", "PROYECTOS") */
+.section-label {
+  font-size: 12px;               /* Muy pequeño */
+  font-weight: 500;              /* Peso medio */
+  letter-spacing: 2.5px;         /* Muy espaciado */
+  text-transform: uppercase;     /* Todo mayúsculas */
+  color: var(--muted);           /* Color gris */
+  margin-bottom: 48px;           /* Espacio debajo */
+  display: flex;                 /* Usa flexbox */
+  align-items: center;           /* Centra verticalmente */
+  gap: 16px;                     /* Espacio entre texto y línea */
+}
+
+/* Línea decorativa al lado del nombre de la sección (usando ::after) */
+.section-label::after {
+  content: '';                /* Crea un elemento vacío */
+  flex: 1;                    /* Rellena el espacio disponible */
+  max-width: 48px;            /* Pero no más de 48px */
+  height: 1px;                /* Altura de 1px (una línea) */
+  background: var(--border);  /* Color gris */
+}
+
+/* ── TARJETAS BASE (BASE COMPARTIDA) ─────────────────────────────────
+   Estilos comunes para experiencias, proyectos y habilidades
+   ────────────────────────────────────────────────────────────────────── */
+.exp-item,
+.project-card,
+.skill-group {
+  background: var(--surface);       /* Fondo blanco */
+  border: 1px solid var(--border);  /* Borde gris claro */
+  border-radius: var(--radius);     /* Esquinas redondeadas (16px) */
+}
+
+/* ── SECCIÓN ABOUT (ACERCA DE) ───────────────────────────────────────
+   Sección biográfica con grid de dos columnas
+   ────────────────────────────────────────────────────────────────────── */
+.about-grid {
+  display: grid;               /* Layout en grid */
+  grid-template-columns: 1fr 1fr;  /* Dos columnas iguales */
+  gap: 64px;                   /* Mucho espacio entre columnas */
+  align-items: start;          /* Alinea al inicio (arriba) */
+}
+
+/* Título de la sección About */
+.about-title {
+  font-family: 'Playfair Display', serif;  /* Fuente elegante */
+  font-size: clamp(32px, 4vw, 48px);      /* Responsivo: entre 32px y 48px */
+  font-weight: 500;                       /* Peso medio */
+  line-height: 1.15;                      /* Líneas compactas */
+  letter-spacing: -1px;                   /* Kerning negativo */
+  color: var(--text);                     /* Negro */
+  margin-bottom: 24px;                    /* Espacio debajo */
+}
+
+/* Párrafos de texto biográfico */
+.about-text {
+  font-size: 16px;           /* Tamaño legible */
+  color: var(--muted);       /* Color gris */
+  line-height: 1.8;          /* Líneas espaciosas */
+  margin-bottom: 16px;       /* Espacio entre párrafos */
+}
+
+/* Grid para mostrar estadísticas (2x2) */
+.stats-grid {
+  display: grid;               /* Layout en grid */
+  grid-template-columns: 1fr 1fr;  /* Dos columnas iguales */
+  gap: 1px;                    /* Línea divisoria de 1px entre celdas */
+  background: var(--border);   /* El fondo del gap es gris (muestra como línea) */
+  border-radius: var(--radius);  /* Esquinas redondeadas */
+  overflow: hidden;            /* Asegura que las esquinas redondeadas se apliquen */
+  border: 1px solid var(--border);  /* Borde exterior */
+}
+
+/* Cada celda de estadísticas */
+.stat-item { 
+  background: var(--surface);  /* Fondo blanco */
+  padding: 32px 28px;          /* Espacio interior generoso */
+}
+
+/* Número de la estadística (ej: "5+", "100%") */
+.stat-number {
+  font-family: 'Playfair Display', serif;  /* Fuente elegante */
+  font-size: 40px;             /* Muy grande para destacar */
+  font-weight: 500;            /* Peso medio */
+  color: var(--text);          /* Negro */
+  line-height: 1;              /* Líneas muy juntas (solo una línea) */
+  letter-spacing: -1px;        /* Kerning negativo */
+  margin-bottom: 8px;          /* Pequeño espacio antes de la etiqueta */
+}
+
+/* Etiqueta bajo el número de estadística (ej: "Años de experiencia") */
+.stat-label { 
+  font-size: 13px;      /* Pequeño */
+  color: var(--muted);  /* Color gris */
+  font-weight: 400;     /* Peso normal */
+}
+
+/* ── SECCIÓN EXPERIENCE (EXPERIENCIA LABORAL) ────────────────────────
+   Muestra historial de trabajos/posiciones
+   ────────────────────────────────────────────────────────────────────── */
+.exp-list { 
+  display: flex;          /* Stack de tarjetas */
+  flex-direction: column; /* Verticalmente */
+  gap: 2px;               /* Línea divisoria muy pequeña entre items */
+}
+
+/* Cada elemento de experiencia (tarjeta) */
+.exp-item {
+  padding: 36px 40px;              /* Espacio interior generoso */
+  display: grid;                   /* Layout en grid */
+  grid-template-columns: 200px 1fr;  /* Columna izquierda fija, derecha flexible */
+  gap: 32px;                       /* Espacio entre columnas */
+  transition: box-shadow var(--transition);  /* Anima la sombra al hover */
+}
+
+/* Primera columna: Contiene fecha y emoji (izquierda) */
+/* Esto asegura que el emoji no se estire verticalmente */
+.exp-item > div:first-child {
+  display: flex;           /* Usa flexbox */
+  flex-direction: column;  /* Elementos apilados */
+  align-items: flex-start; /* Alineados a la izquierda */
+}
+
+/* Efecto al pasar el mouse sobre un item de experiencia */
+.exp-item:hover { 
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);  /* Sombra sutil */
+}
+
+/* Fechas de la experiencia (ej: "2020 - 2023") */
+.exp-date {
+  font-size: 13px;        /* Pequeño */
+  color: var(--muted);    /* Color gris */
+  font-weight: 400;       /* Peso normal */
+  padding-top: 4px;       /* Pequeño espacio arriba */
+}
+
+/* Ícono/emoji de la experiencia (pequeño rectángulo con emoji) */
+.exp-emoji {
+  margin-top: 50px;                 /* Espacio arriba */
+  display: inline-flex;             /* Flexbox */
+  border: 1px solid var(--border);  /* Borde gris */
+  margin-left: 50px;                /* Espacio a la izquierda */
+  background: var(--tag-bg);        /* Fondo gris claro */
+  border-radius: 12px;              /* Esquinas redondeadas */
+  width: 72px; height: 72px;        /* Altura fija */
+  display: flex;                    /* Centra contenido */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;                  /* Tamaño del emoji */
+}
+
+/* Nombre de la empresa (ej: "ACME Corp") */
+.exp-company {
+  font-size: 11px;             /* Muy pequeño */
+  font-weight: 500;            /* Peso medio */
+  letter-spacing: 1.5px;       /* Muy espaciado */
+  text-transform: uppercase;   /* Todo mayúsculas */
+  color: var(--muted);         /* Color gris */
+  margin-bottom: 6px;          /* Pequeño espacio debajo */
+}
+
+/* Título del cargo/rol (ej: "Senior Developer") */
+.exp-role {
+  font-size: 20px;             /* Grande */
+  font-weight: 500;            /* Peso medio */
+  color: var(--text);          /* Negro */
+  margin-bottom: 16px;         /* Espacio debajo */
+  letter-spacing: -0.3px;      /* Kerning ligero negativo */
+}
+
+/* Descripción de las responsabilidades/logros */
+.exp-desc {
+  font-size: 15px;      /* Tamaño legible */
+  color: var(--muted);  /* Color gris */
+  line-height: 1.7;     /* Líneas espaciosas */
+  margin-bottom: 16px;  /* Espacio debajo de los tags */
+}
+
+/* ── TAGS (ETIQUETAS) ────────────────────────────────────────────────
+   Usan para mostrar tecnologías, habilidades, etc. en experiencias y proyectos
+   ────────────────────────────────────────────────────────────────────── */
+.exp-tags { 
+  display: flex;    /* Los tags en fila */
+  flex-wrap: wrap;  /* Si no caben, bajan a nueva línea */
+  gap: 8px;         /* Espacio pequeño entre tags */
+}
+
+/* Estilo individual de cada tag/etiqueta */
+.tag {
+  font-size: 12px;              /* Texto pequeño */
+  font-weight: 500;             /* Peso medio */
+  color: var(--text);           /* Texto negro */
+  background: var(--tag-bg);    /* Fondo gris claro */
+  border-radius: 100px;         /* Muy redondeado (forma de píldora) */
+  padding: 5px 14px;            /* Espacio interior */
+}
+
+/* ── SECCIÓN PROJECTS (PROYECTOS) ───────────────────────────────────
+   Galería de proyectos con grid de dos columnas
+   ────────────────────────────────────────────────────────────────────── */
+.projects-grid {
+  display: grid;               /* Layout en grid */
+  grid-template-columns: 1fr 1fr;  /* Dos columnas iguales */
+  gap: 20px;                   /* Espacio entre tarjetas */
+}
+
+/* Tarjeta individual de proyecto */
+.project-card {
+  padding: 40px;                        /* Espacio interior */
+  transition: box-shadow var(--transition), transform var(--transition);  /* Anima */
+  position: relative;                   /* Para posicionamiento de elementos hijos */
+  overflow: hidden;                     /* Recorta contenido que se sale */
+}
+
+/* Efecto al pasar el mouse sobre una tarjeta */
+.project-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);  /* Sombra notable */
+  transform: translateY(-3px);                /* Sube 3px */
+}
+
+/* Tarjeta destacada (proyecto principal, ocupa dos columnas) */
+.project-card.featured {
+  grid-column: 1 / -1;           /* Ocupa todas las columnas */
+  display: grid;                 /* Layout en grid interno */
+  grid-template-columns: 1fr 1fr;  /* Dos columnas iguales */
+  gap: 48px;                     /* Espacio entre contenido y visual */
+  align-items: center;           /* Centra verticalmente */
+}
+
+/* Tags dentro de tarjetas de proyecto necesitan espacio arriba */
+.project-card .exp-tags { 
+  margin-top: 16px;  /* Espacio arriba */
+}
+
+/* Ícono pequeño del proyecto (cuadrado con emoji) */
+.project-icon {
+  width: 48px; height: 48px;      /* Cuadrado 48x48 */
+  border-radius: 12px;             /* Esquinas ligeramente redondeadas */
+  background: var(--accent);       /* Fondo azul oscuro */
+  display: flex;                   /* Centra el ícono */
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;             /* Espacio debajo */
+  font-size: 22px;                 /* Tamaño del emoji */
+}
+
+/* Versión clara del ícono (para ciertos proyectos) */
+.project-icon--light { 
+  background: #f0f4ff;  /* Fondo azul muy claro */
+}
+
+/* Etiqueta del proyecto (ej: "UI DESIGN") */
+.project-label {
+  font-size: 11px;             /* Muy pequeño */
+  font-weight: 500;            /* Peso medio */
+  letter-spacing: 1.5px;       /* Muy espaciado */
+  text-transform: uppercase;   /* Todo mayúsculas */
+  color: var(--muted);         /* Color gris */
+  margin-bottom: 10px;         /* Espacio debajo */
+}
+
+/* Título del proyecto */
+.project-title {
+  font-family: 'Playfair Display', serif;  /* Fuente elegante */
+  font-size: 28px;             /* Grande */
+  font-weight: 500;            /* Peso medio */
+  color: var(--text);          /* Negro */
+  letter-spacing: -0.5px;      /* Kerning ligero negativo */
+  margin-bottom: 16px;         /* Espacio debajo */
+  line-height: 1.2;            /* Líneas compactas */
+}
+
+/* Descripción del proyecto */
+.project-desc {
+  font-size: 15px;      /* Tamaño legible */
+  color: var(--muted);  /* Color gris */
+  line-height: 1.7;     /* Líneas espaciosas */
+  margin-bottom: 24px;  /* Espacio debajo */
+}
+
+/* Área visual del proyecto (muestra de imagen/mockup) */
+.project-visual {
+  background: var(--accent-soft);  /* Fondo azul muy claro */
+  border-radius: 12px;             /* Esquinas redondeadas */
+  height: 220px;                   /* Altura fija */
+  display: flex;                   /* Centra contenido */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;                       /* Espacio entre emoji y texto */
+  font-size: 64px;                 /* Tamaño del emoji */
+}
+
+/* Texto dentro del área visual */
+.project-visual span {
+  font-family: 'DM Sans', sans-serif;  /* Fuente estándar */
+  font-size: 13px;               /* Pequeño */
+  color: var(--muted);           /* Color gris */
+  font-weight: 500;              /* Peso medio */
+}
+
+/* ── SECCIÓN SKILLS (HABILIDADES) ───────────────────────────────────
+   Muestra grupos de habilidades en una malla de 3 columnas
+   ────────────────────────────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;                   /* Layout en grid */
+  grid-template-columns: repeat(3, 1fr);  /* Tres columnas iguales */
+  gap: 20px;                       /* Espacio entre grupos */
+}
+
+/* Grupo de habilidades (tarjeta) */
+.skill-group { 
+  padding: 32px;  /* Espacio interior generoso */
+}
+
+/* Título de cada grupo de habilidades (ej: "Frontend", "Backend") */
+.skill-group-title {
+  font-size: 13px;           /* Pequeño */
+  font-weight: 600;          /* Fuerte/negrita */
+  color: var(--text);        /* Negro */
+  margin-bottom: 16px;       /* Espacio debajo */
+  letter-spacing: -0.2px;    /* Kerning muy ligero negativo */
+}
+
+/* Lista de habilidades dentro de un grupo */
+.skill-list { 
+  display: flex;          /* Stack */
+  flex-direction: column; /* Verticalmente */
+  gap: 8px;               /* Pequeño espacio entre items */
+}
+
+/* Cada habilidad individual (ej: "React", "JavaScript") */
+.skill-item {
+  font-size: 14px;       /* Tamaño estándar */
+  color: var(--muted);   /* Color gris */
+  display: flex;         /* Flexbox para alinear punto y texto */
+  align-items: center;   /* Centra verticalmente */
+  gap: 10px;             /* Espacio entre punto y texto */
+}
+
+/* Punto/bala decorativo antes de cada habilidad */
+.skill-dot {
+  width: 5px; height: 5px;  /* Pequeño cuadrado */
+  border-radius: 50%;        /* Hace que sea un círculo */
+  background: var(--border); /* Color gris claro */
+  flex-shrink: 0;            /* No se comprime aunque la fila sea corta */
+}
+
+/* ── SECCIÓN CONTACT (CONTACTO) ──────────────────────────────────────
+   Sección con llamada a la acción para contactar
+   ────────────────────────────────────────────────────────────────────── */
+.contact-inner {
+  background: var(--accent);     /* Fondo azul oscuro */
+  border-radius: 24px;           /* Esquinas bien redondeadas */
+  padding: 80px;                 /* Mucho espacio interior */
+  text-align: center;            /* Todo centrado */
+  color: #fff;                   /* Texto blanco */
+}
+
+/* Título de la sección de contacto */
+.contact-inner h2 {
+  font-family: 'Playfair Display', serif;  /* Fuente elegante */
+  font-size: clamp(36px, 5vw, 56px);      /* Responsivo: entre 36 y 56px */
+  font-weight: 500;                       /* Peso medio */
+  letter-spacing: -1px;                   /* Kerning negativo */
+  margin-bottom: 16px;                    /* Espacio debajo */
+}
+
+/* Párrafo descriptivo en la sección de contacto */
+.contact-inner p { 
+  font-size: 16px;      /* Tamaño legible */
+  opacity: 0.6;         /* Semitransparente (gris claro sobre blanco) */
+  margin-bottom: 48px;  /* Mucho espacio debajo (para los botones) */
+}
+
+/* Contenedor de botones de contacto */
+.contact-links { 
+  display: flex;        /* En fila */
+  justify-content: center;  /* Centrados */
+  gap: 16px;           /* Espacio entre botones */
+  flex-wrap: wrap;     /* Si no caben, bajan a nueva línea */
+}
+
+/* Botones de contacto */
+.contact-link { 
+  transition: opacity var(--transition), transform var(--transition);  /* Anima */
+}
+
+/* Efecto al pasar el mouse */
+.contact-link:hover { 
+  opacity: 0.8;              /* Ligeramente más transparente */
+  transform: translateY(-2px);  /* Sube 2px */
+}
+
+/* Botón de contacto con fondo translúcido claro */
+.contact-link.light { 
+  background: rgba(255,255,255,0.12);  /* Fondo blanco muy transparente */
+  color: #fff;                          /* Texto blanco */
+}
+
+/* Botón de contacto con fondo blanco */
+.contact-link.white { 
+  background: #fff;          /* Fondo blanco */
+  color: var(--accent);      /* Texto azul oscuro */
+}
+
+/* ── FOOTER (PIE DE PÁGINA) ──────────────────────────────────────────
+   Barra inferior con información de copyright
+   ────────────────────────────────────────────────────────────────────── */
+footer {
+  text-align: center;              /* Texto centrado */
+  padding: 40px 48px;              /* Espacio interior */
+  font-size: 13px;                 /* Texto pequeño */
+  color: var(--muted);             /* Color gris */
+  border-top: 1px solid var(--border);  /* Línea divisoria superior */
+}
+
+/* ── REVEAL (ANIMACIÓN AL HACER SCROLL) ──────────────────────────────
+   Anima elementos cuando entran en el área visible (scroll reveal effect)
+   ────────────────────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 1;                    /* Elemento visible */
+  transform: translateY(0);      /* Posición normal */
+  transition: opacity 0.6s ease, transform 0.6s ease;  /* Anima suavemente */
+}
+
+/* Estado oculto del elemento (antes de que sea visible) */
+.reveal.hidden { 
+  opacity: 0;                /* Invisible */
+  transform: translateY(20px);  /* 20px hacia abajo */
+}
+
+/* Estado visible del elemento (después de que sea visible) */
+.reveal.visible { 
+  opacity: 1;              /* Visible */
+  transform: translateY(0);  /* Posición normal */
+}
+
+/* ── RESPONSIVE (DISEÑO ADAPTABLE PARA PANTALLAS PEQUEÑAS) ──────────
+   Media query para dispositivos móviles/tablets (máximo 768px de ancho)
+   ────────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Reduce el padding horizontal de la navegación */
+  nav { padding: 0 24px; }
+  
+  /* Oculta los enlaces del menú (se mostrarían en un menú hamburguesa) */
+  .nav-links { display: none; }
+  
+  /* Reduce el padding horizontal del hero y secciones */
+  .hero, section { padding-left: 24px; padding-right: 24px; }
+  
+  /* Reduce el padding superior del hero */
+  .hero { padding-top: 100px; }
+  
+  /* El grid del About se convierte en una sola columna */
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  
+  /* Los items de experiencia se convierten en una sola columna */
+  .exp-item { grid-template-columns: 1fr; gap: 8px; }
+  
+  /* Los proyectos se convierten en una sola columna */
+  .projects-grid { grid-template-columns: 1fr; }
+  
+  /* Los proyectos destacados también se convierten en una sola columna */
+  .project-card.featured { grid-template-columns: 1fr; }
+  
+  /* El grid de skills se reduce de 3 a 2 columnas */
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  
+  /* Reduce el padding de la sección de contacto */
+  .contact-inner { padding: 48px 24px; }
+}

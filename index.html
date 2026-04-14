@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dídac Gallego Pérez — Tècnic Informàtic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Dídac <em>Gallego Pérez</em></a>
+    <div class="nav-inner">
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav.about">Sobre mi</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experiència</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projectes</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Habilitats</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contacte</a></li>
+      </ul>
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-ca" onclick="setLang('ca')">CA</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div style="position:relative;">
+    <div class="hero">
+      <p class="hero-eyebrow" data-i18n="hero.eyebrow">Tècnic Informàtic · Barcelona</p>
+      <h1>Dídac<br><em>Gallego Pérez</em></h1>
+      <p class="hero-desc" data-i18n="hero.desc">Especialitzat en infraestructures crítiques i entorns hospitalaris. Més de 2.100 incidències resoltes en 6 centres hospitalaris.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary" data-i18n="hero.btn1">Veure projectes →</a>
+        <a href="#contact" class="btn-secondary" data-i18n="hero.btn2">Contactar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label reveal" data-i18n="about.label">Sobre mi</p>
+    <div class="about-grid">
+      <div>
+        <h2 class="about-title reveal" data-i18n="about.title">Tecnologia, criteri i ganes d'aprendre.</h2>
+        <p class="about-text reveal" data-i18n="about.text1">Tècnic Informàtic especialitzat en infraestructures crítiques, amb experiència directa en el sector sanitari gestionant més de 2.100 incidències en 6 centres hospitalaris.</p>
+        <p class="about-text reveal" data-i18n="about.text2">Em caracteritzo per una actitud proactiva, capacitat d'adaptació en entorns exigents i un compromís genuí amb l'aprenentatge i la tecnologia. Experiència internacional gràcies a l'Erasmus a Milà, Itàlia.</p>
+      </div>
+      <div class="stats-grid reveal">
+        <div class="stat-item">
+          <div class="stat-number">2.100+</div>
+          <div class="stat-label" data-i18n="about.stat1">Incidències resoltes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">6</div>
+          <div class="stat-label" data-i18n="about.stat2">Centres hospitalaris</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label" data-i18n="about.stat3">Graus cursats</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2</div>
+          <div class="stat-label" data-i18n="about.stat4">Idiomes nadius</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label reveal" data-i18n="exp.label">Experiència</p>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-date" data-i18n="exp1.date">Maig 2025 — Març 2026</div>
+          <div class="exp-emoji">🏥</div>
+        </div>
+        <div>
+          <div class="exp-company" data-i18n="exp1.company">Grup Hospitalari · Catalunya</div>
+          <div class="exp-role" data-i18n="exp1.role">Tècnic Informàtic — Dep. Informàtica Hospitalària</div>
+          <p class="exp-desc" data-i18n="exp1.desc">Suport tècnic presencial i remot en xarxa de 6 centres hospitalaris catalans. Gestió i resolució de més de 1.600 incidències en 10 mesos. Tasques destacades: inventari complet de 164 equips, 81 impressores i 155 extensions telefòniques, migració de +80 equips a Windows 11, manteniment de l'Active Directory amb reorganització per unitats organitzatives, i automatització de tasques de manteniment mitjançant scripts personalitzats.</p>
+          <div class="exp-tags">
+            <span class="tag">Active Directory</span>
+            <span class="tag">GLPI</span>
+            <span class="tag">Zimbra</span>
+            <span class="tag">Switches Aruba</span>
+            <span class="tag">Inventari IT</span>
+            <span class="tag">1600 incidències</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-date" data-i18n="exp2.date">Març 2024 — Setembre 2024</div>
+          <div class="exp-emoji">🏥</div>
+        </div>
+        <div>
+          <div class="exp-company" data-i18n="exp2.company">Grup Hospitalari · Catalunya</div>
+          <div class="exp-role" data-i18n="exp2.role">Tècnic Informàtic — Pràctiques GM + Contracte Temporal</div>
+          <p class="exp-desc" data-i18n="exp2.desc">Pràctiques de Grau Mitjà (març–maig) i contracte temporal (juny–setembre). Suport tècnic presencial al centre principal i remot per a 5 centres addicionals. Total de +458 incidències resoltes: 302 presencials i 156 en remot.</p>
+          <div class="exp-tags">
+            <span class="tag">Suport tècnic</span>
+            <span class="tag">Hardware</span>
+            <span class="tag">Networking</span>
+            <span class="tag">Impresores - Zebra / Kyocera / HP</span>
+            <span class="tag">+ 458 incidències</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-date" data-i18n="exp3.date">Maig 2023 — Juliol 2023</div>
+          <div class="exp-emoji">🎓</div>
+        </div>
+        <div>
+          <div class="exp-company" data-i18n="exp3.company">IIS Leonardo da Vinci Ripamonti · Milà, Itàlia</div>
+          <div class="exp-role" data-i18n="exp3.role">Erasmus+ — Tècnic Informàtic</div>
+          <p class="exp-desc" data-i18n="exp3.desc">Pràctiques internacionals de dos mesos en un centre educatiu italià. Responsabilitats: instal·lació i configuració de sistemes operatius Windows, reparació i formatat d'equips, gestió de llicències Microsoft i optimització del rendiment dels ordinadors del centre. Experiència en entorn multilingüe que va permetre desenvolupar capacitat d'adaptació i comunicació en context internacional.</p>
+          <div class="exp-tags">
+            <span class="tag">Erasmus+</span>
+            <span class="tag">Windows OS</span>
+            <span class="tag">Llicències Microsoft</span>
+            <span class="tag">Reparació d'equips</span>
+            <span class="tag">Italià</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label reveal" data-i18n="proj.label">Projectes</p>
+    <div class="projects-grid">
+
+      <div class="project-card featured reveal">
+        <div>
+          <div class="project-label" data-i18n="proj.hs.label">Projecte personal destacat</div>
+          <h3 class="project-title">Home Server</h3>
+          <p class="project-desc" data-i18n="proj.hs.desc1">Servidor domèstic d'alta disponibilitat sobre hardware convencional — un portàtil MSI amb Ubuntu Server 24.04 LTS i arquitectura de microserveis basada en Docker. 23 contenidors en producció, 7,5 TB d'emmagatzematge i desplegat en 48 hores. Sense cloud, sense subscripcions: control total de les dades.</p>
+          <p class="project-desc" data-i18n="proj.hs.desc2">Inclou núvol familiar (Nextcloud), galeria fotogràfica amb IA (Immich), streaming (Jellyfin), gestor de contrasenyes (Vaultwarden), bloqueig de publicitat (Pi-hole), VPN (WireGuard) i IA local (Gemma via Open WebUI). Dashboard de monitoratge personalitzat amb Scrutiny, Uptime Kuma i estat de RAIDs en temps real.</p>
+          <div class="exp-tags">
+            <span class="tag">Ubuntu Server</span>
+            <span class="tag">Docker</span>
+            <span class="tag">RAID 0</span>
+            <span class="tag">RAID 1</span>
+            <span class="tag">WireGuard VPN</span>
+            <span class="tag">Nextcloud</span>
+            <span class="tag">Jellyfin</span>
+            <span class="tag">Immich</span>
+            <span class="tag">Pi-hole</span>
+            <span class="tag">Gemma IA 26b MoE</span>
+            <span class="tag">i7-13620H · 32GB RAM</span>
+          </div>
+        </div>
+        <div class="project-visual">
+          🖥️
+          <span data-i18n="proj.hs.badge">23 serveis actius · 7,5 TB</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">💻</div>
+        <div class="project-label" data-i18n="proj.tp.label">Restauració de hardware</div>
+        <h3 class="project-title">ThinkPad T480</h3>
+        <p class="project-desc" data-i18n="proj.tp.desc">Compra i restauració completa d'un ThinkPad T480 de segona mà per 215€. Investigació prèvia per triar el model amb millor reparabilitat (últim ThinkPad amb RAM ampliable i dues bateries). Substitució de bateries, SSD NVMe 256GB a la ranura M.2 2242 i Fedora Linux. Resultat: 15–18h d'autonomia real, 512GB i rendiment competitiu. Inversió total: ~374€.</p>
+        <div class="exp-tags">
+          <span class="tag">Hardware</span>
+          <span class="tag">Reparabilitat</span>
+          <span class="tag">Fedora Linux</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon project-icon--light">🔒</div>
+        <div class="project-label" data-i18n="proj.ft.label">Formació · En curs</div>
+        <h3 class="project-title">Fortinet NSE1 Fundamentals</h3>
+        <p class="project-desc" data-i18n="proj.ft.label1">(en curs)</p>
+        <p class="project-desc" data-i18n="proj.ft.desc">Certificació de ciberseguretat en procés, orientada als fonaments de la seguretat en xarxes i sistemes. Complementada amb el curs de Hacking Ètic de Salesians de Sarrià (6h).</p>
+        <div class="exp-tags">
+          <span class="tag">Ciberseguretat</span>
+          <span class="tag">Fortinet</span>
+          <span class="tag">Hacking Ètic</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label reveal" data-i18n="skills.label">Habilitats tècniques</p>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="skills.g1">Sistemes i Servidors</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>Ubuntu Server</div>
+          <div class="skill-item"><span class="skill-dot"></span>Windows Server</div>
+          <div class="skill-item"><span class="skill-dot"></span>Active Directory</div>
+          <div class="skill-item"><span class="skill-dot"></span>Docker</div>
+          <div class="skill-item"><span class="skill-dot"></span>RAID (mdadm)</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="skills.g2">Xarxes i Virtualització</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>WireGuard VPN</div>
+          <div class="skill-item"><span class="skill-dot"></span>Switches Aruba</div>
+          <div class="skill-item"><span class="skill-dot"></span>Cisco Packet Tracer</div>
+          <div class="skill-item"><span class="skill-dot"></span>VirtualBox</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="skills.g3">Cloud i Bases de Dades</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>AWS</div>
+          <div class="skill-item"><span class="skill-dot"></span>PostgreSQL</div>
+          <div class="skill-item"><span class="skill-dot"></span>Oracle DB</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="skills.g4">Gestió i Monitoratge</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>GLPI</div>
+          <div class="skill-item"><span class="skill-dot"></span>Zabbix</div>
+          <div class="skill-item"><span class="skill-dot"></span>Uptime Kuma</div>
+          <div class="skill-item"><span class="skill-dot"></span>Portainer</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="skills.g5">Programació i Scripting</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span>HTML / CSS</div>
+          <div class="skill-item"><span class="skill-dot"></span>jQuery</div>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="skills.g6">Idiomes</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-dot"></span><span data-i18n="skills.lang1">Català — Natiu</span></div>
+          <div class="skill-item"><span class="skill-dot"></span><span data-i18n="skills.lang2">Castellà — Natiu</span></div>
+          <div class="skill-item"><span class="skill-dot"></span><span data-i18n="skills.lang3">Anglès — B1</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner reveal">
+      <h2 data-i18n="contact.title">Treballem junts?</h2>
+      <p data-i18n="contact.sub">Obert a noves oportunitats professionals i col·laboracions.</p>
+      <div class="contact-links">
+        <a href="mailto:didacgallegoperez@gmail.com" class="contact-link white">✉️ didacgallegoperez@gmail.com</a>
+        <a href="https://www.linkedin.com/in/didac-gallego" target="_blank" class="contact-link light">LinkedIn →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span data-i18n="footer.text">© 2026 Dídac Gallego Pérez · didac-gallego-perez.github.io</span>
+  </footer>
+
+  <script>
+    const t = {
+      ca: {
+        "nav.about": "Sobre mi", "nav.experience": "Experiència", "nav.projects": "Projectes", "nav.skills": "Habilitats", "nav.contact": "Contacte",
+        "hero.eyebrow": "Tècnic Informàtic · Barcelona",
+        "hero.desc": "Especialitzat en infraestructures crítiques i entorns hospitalaris. Més de 2.100 incidències resoltes en 6 centres hospitalaris.",
+        "hero.btn1": "Veure projectes →", "hero.btn2": "Contactar", "hero.scroll": "Scroll",
+        "about.label": "Sobre mi",
+        "about.title": "Tecnologia, criteri i ganes d'aprendre.",
+        "about.text1": "Tècnic Informàtic especialitzat en infraestructures crítiques, amb experiència directa en el sector sanitari gestionant més de 2.100 incidències en 6 centres hospitalaris.",
+        "about.text2": "Em caracteritzo per una actitud proactiva, capacitat d'adaptació en entorns exigents i un compromís genuí amb l'aprenentatge i la tecnologia. Experiència internacional gràcies a l'Erasmus a Milà, Itàlia.",
+        "about.stat1": "Incidències resoltes", "about.stat2": "Centres hospitalaris", "about.stat3": "Graus cursats", "about.stat4": "Idiomes nadius",
+        "exp.label": "Experiència",
+        "exp1.date": "Maig 2025 — Març 2026", "exp1.company": "Grup Hospitalari · Catalunya",
+        "exp1.role": "Tècnic Informàtic — Dep. Informàtica Hospitalària",
+        "exp1.desc": "Suport tècnic presencial i remot en xarxa de 6 centres hospitalaris catalans. Gestió i resolució de més de 1.600 incidències en 10 mesos. Tasques destacades: inventari complet de 164 equips, 81 impressores i 155 extensions telefòniques; migració de +80 equips a Windows 11, manteniment de l'Active Directory amb reorganització per unitats organitzatives, automatització de tasques de manteniment d'equips mitjançant scripts personalitzats.",
+        "exp2.date": "Març 2024 — Setembre 2024", "exp2.company": "Grup Hospitalari · Catalunya",
+        "exp2.role": "Tècnic Informàtic — Pràctiques GM + Contracte Temporal",
+        "exp2.desc": "Pràctiques de Grau Mitjà (març–maig) i contracte temporal (juny–setembre). Suport tècnic presencial al centre principal i remot per a 5 centres addicionals. Total de 458 incidències resoltes: 302 presencials i 156 en remot.",
+        "exp3.date": "Maig 2023 — Juliol 2023", "exp3.company": "IIS Leonardo da Vinci Ripamonti · Milà, Itàlia",
+        "exp3.role": "Erasmus+ — Tècnic Informàtic",
+        "exp3.desc": "Pràctiques internacionals de dos mesos en un centre educatiu italià. Responsabilitats: instal·lació i configuració de sistemes operatius Windows, reparació i formatat d'equips, gestió de llicències Microsoft i optimització del rendiment dels ordinadors del centre. Experiència en entorn multilingüe que va permetre desenvolupar capacitat d'adaptació i comunicació en context internacional.",
+        "proj.label": "Projectes",
+        "proj.hs.label": "Projecte personal destacat",
+        "proj.hs.desc1": "Servidor domèstic d'alta disponibilitat sobre hardware convencional, un portàtil MSI amb Ubuntu Server 24.04 LTS i arquitectura de microserveis basada en Docker. 23 contenidors en producció, 7,5 TB d'emmagatzematge i desplegat en 48 hores. Sense cloud, sense subscripcions: control total de les dades.",
+        "proj.hs.desc2": "Inclou núvol familiar (Nextcloud), galeria fotogràfica amb IA (Immich), streaming (Jellyfin), gestor de contrasenyes (Vaultwarden), bloqueig de publicitat (Pi-hole), VPN (WireGuard) i IA local (Gemma via Open WebUI). Dashboard de monitoratge personalitzat amb Scrutiny, Uptime Kuma i estat de RAIDs en temps real.",
+        "proj.hs.badge": "23 serveis actius · 7,5 TB",
+        "proj.tp.label": "Restauració de hardware",
+        "proj.tp.desc": "Compra i restauració completa d'un ThinkPad T480 de segona mà per 215€. Investigació prèvia per triar el model amb millor reparabilitat (últim ThinkPad amb RAM ampliable i dues bateries). Substitució de bateries, SSD NVMe 256GB a la ranura M.2 2242 i Fedora Linux. Resultat: 15–18h d'autonomia real, 512GB i rendiment competitiu. Inversió total: ~374€.",
+        "proj.ft.label": "Formació · En curs",
+        "proj.ft.label1": "(en curs)",
+        "proj.ft.desc": "Certificació de ciberseguretat en procés, orientada als fonaments de la seguretat en xarxes i sistemes. Complementada amb el curs de Hacking Ètic de Salesians de Sarrià (6h).",
+        "skills.label": "Habilitats tècniques",
+        "skills.g1": "Sistemes i Servidors", "skills.g2": "Xarxes i Virtualització", "skills.g3": "Cloud i Bases de Dades",
+        "skills.g4": "Gestió i Monitoratge", "skills.g5": "Programació i Scripting", "skills.g6": "Idiomes",
+        "skills.lang1": "Català — Natiu", "skills.lang2": "Castellà — Natiu", "skills.lang3": "Anglès — B1",
+        "contact.title": "Treballem junts?", "contact.sub": "Obert a noves oportunitats professionals i col·laboracions.",
+        "footer.text": "© 2026 Dídac Gallego Pérez · didac-gallego-perez.github.io"
+      },
+      es: {
+        "nav.about": "Sobre mí", "nav.experience": "Experiencia", "nav.projects": "Proyectos", "nav.skills": "Habilidades", "nav.contact": "Contacto",
+        "hero.eyebrow": "Técnico Informático · Barcelona",
+        "hero.desc": "Especializado en infraestructuras críticas y entornos hospitalarios. Más de 2.100 incidencias resueltas en 6 centros hospitalarios.",
+        "hero.btn1": "Ver proyectos →", "hero.btn2": "Contactar", "hero.scroll": "Scroll",
+        "about.label": "Sobre mí",
+        "about.title": "Tecnología, criterio y ganas de aprender.",
+        "about.text1": "Técnico Informático especializado en infraestructuras críticas, con experiencia directa en el sector sanitario gestionando más de 2.100 incidencias en 6 centros hospitalarios.",
+        "about.text2": "Me caracterizo por una actitud proactiva, capacidad de adaptación en entornos exigentes y un compromiso genuino con el aprendizaje y la tecnología. Experiencia internacional gracias al Erasmus en Milán, Italia.",
+        "about.stat1": "Incidencias resueltas", "about.stat2": "Centros hospitalarios", "about.stat3": "Grados cursados", "about.stat4": "Idiomas nativos",
+        "exp.label": "Experiencia",
+        "exp1.date": "Mayo 2025 — Marzo 2026", "exp1.company": "Grupo Hospitalario · Cataluña",
+        "exp1.role": "Técnico Informático — Dep. Informática Hospitalaria",
+        "exp1.desc": "Soporte técnico presencial y remoto en red de 6 centros hospitalarios catalanes. Gestión y resolución de más de 1.600 incidencias en 10 meses. Tareas destacadas: inventario completo de 164 equipos, 81 impresoras y 155 extensiones telefónicas, migración de +80 equipos a Windows 11, mantenimiento del Active Directory con reorganización por unidades organizativas y automatización de tareas de mantenimiento de equipos mediante scripts personalizados.",
+        "exp2.date": "Marzo 2024 — Septiembre 2024", "exp2.company": "Grupo Hospitalario · Cataluña",
+        "exp2.role": "Técnico Informático — Prácticas GM + Contrato Temporal",
+        "exp2.desc": "Prácticas de Grado Medio (marzo–mayo) y contrato temporal (junio–septiembre). Soporte técnico presencial en el centro principal y remoto para 5 centros adicionales. Total de 458 incidencias resueltas: 302 presenciales y 156 en remoto.",
+        "exp3.date": "Mayo 2023 — Julio 2023", "exp3.company": "IIS Leonardo da Vinci Ripamonti · Milán, Italia",
+        "exp3.role": "Erasmus+ — Técnico Informático",
+        "exp3.desc": "Prácticas internacionales de dos meses en un centro educativo italiano. Responsabilidades: instalación y configuración de sistemas operativos Windows, reparación y formateo de equipos, gestión de licencias Microsoft y optimización del rendimiento. Experiencia en entorno multilingüe que permitió desarrollar capacidad de adaptación y comunicación en contexto internacional.",
+        "proj.label": "Proyectos",
+        "proj.hs.label": "Proyecto personal destacado",
+        "proj.hs.desc1": "Servidor doméstico de alta disponibilidad sobre hardware convencional — un portátil MSI con Ubuntu Server 24.04 LTS y arquitectura de microservicios basada en Docker. 23 contenedores en producción, 7,5 TB de almacenamiento y desplegado en 48 horas. Sin cloud, sin suscripciones: control total de los datos.",
+        "proj.hs.desc2": "Incluye nube familiar (Nextcloud), galería fotográfica con IA (Immich), streaming (Jellyfin), gestor de contraseñas (Vaultwarden), bloqueo de publicidad (Pi-hole), VPN (WireGuard) e IA local (Gemma via Open WebUI). Dashboard de monitorización personalizado con Scrutiny, Uptime Kuma y estado de RAIDs en tiempo real.",
+        "proj.hs.badge": "23 servicios activos · 7,5 TB",
+        "proj.tp.label": "Restauración de hardware",
+        "proj.tp.desc": "Compra y restauración completa de un ThinkPad T480 de segunda mano por 215€. Investigación previa para elegir el modelo con mejor reparabilidad (último ThinkPad con RAM ampliable y dos baterías). Sustitución de baterías, SSD NVMe 256GB en ranura M.2 2242 y Fedora Linux. Resultado: 15–18h de autonomía real, 512GB y rendimiento competitivo. Inversión total: ~374€.",
+        "proj.ft.label": "Formación · En curso",
+        "proj.ft.label1": "(en curso)",
+        "proj.ft.desc": "Certificación de ciberseguridad en proceso, orientada a los fundamentos de la seguridad en redes y sistemas. Complementada con el curso de Hacking Ético de Salesians de Sarrià (6h).",
+        "skills.label": "Habilidades técnicas",
+        "skills.g1": "Sistemas y Servidores", "skills.g2": "Redes y Virtualización", "skills.g3": "Cloud y Bases de Datos",
+        "skills.g4": "Gestión y Monitorización", "skills.g5": "Programación y Scripting", "skills.g6": "Idiomas",
+        "skills.lang1": "Catalán — Nativo", "skills.lang2": "Castellano — Nativo", "skills.lang3": "Inglés — B1",
+        "contact.title": "¿Trabajamos juntos?", "contact.sub": "Abierto a nuevas oportunidades profesionales y colaboraciones.",
+        "footer.text": "© 2026 Dídac Gallego Pérez · didac-gallego-perez.github.io"
+      },
+      en: {
+        "nav.about": "About", "nav.experience": "Experience", "nav.projects": "Projects", "nav.skills": "Skills", "nav.contact": "Contact",
+        "hero.eyebrow": "IT Technician · Barcelona",
+        "hero.desc": "Specialized in critical infrastructures and hospital environments. Over 2,100 incidents resolved across 6 hospital centers.",
+        "hero.btn1": "View projects →", "hero.btn2": "Contact", "hero.scroll": "Scroll",
+        "about.label": "About me",
+        "about.title": "Technology, judgement and a drive to learn.",
+        "about.text1": "IT Technician specialized in critical infrastructures, with direct experience in the healthcare sector managing over 2,100 incidents across 6 hospital centers.",
+        "about.text2": "I am proactive, adaptable in demanding environments, and genuinely committed to continuous learning and technology. International experience through an Erasmus internship in Milan, Italy.",
+        "about.stat1": "Incidents resolved", "about.stat2": "Hospital centers", "about.stat3": "Degrees completed", "about.stat4": "Native languages",
+        "exp.label": "Experience",
+        "exp1.date": "May 2025 — March 2026", "exp1.company": "Hospital Group · Catalonia",
+        "exp1.role": "IT Technician — Hospital IT Department",
+        "exp1.desc": "On-site and remote technical support across a network of 6 Catalan hospital centers. Management and resolution of over 1,600 incidents in 10 months. Key tasks: full inventory of 164 computers, 81 printers and 155 phone extensions; migration of 80+ devices to Windows 11, Active Directory maintenance with OU reorganization, and maintenance task automation through custom scripts.",
+        "exp2.date": "March 2024 — September 2024", "exp2.company": "Hospital Group · Catalonia",
+        "exp2.role": "IT Technician — Vocational Placement + Temporary Contract",
+        "exp2.desc": "Vocational training placement (March–May) and temporary contract (June–September). On-site technical support at the main center and remote support for 5 additional centers. Total of 458 incidents resolved: 302 on-site and 156 remotely.",
+        "exp3.date": "May 2023 — July 2023", "exp3.company": "IIS Leonardo da Vinci Ripamonti · Milan, Italy",
+        "exp3.role": "Erasmus+ — IT Technician",
+        "exp3.desc": "Two-month international internship at an Italian educational center. Responsibilities: installation and configuration of Windows operating systems, equipment repair and formatting, Microsoft license management and performance optimization. Experience in a multilingual environment that developed adaptation and communication skills in an international context.",
+        "proj.label": "Projects",
+        "proj.hs.label": "Featured personal project",
+        "proj.hs.desc1": "High-availability home server built on conventional hardware — an MSI laptop running Ubuntu Server 24.04 LTS with a Docker-based microservices architecture. 23 containers in production, 7.5 TB of storage, deployed in 48 hours. No cloud, no subscriptions: full data ownership.",
+        "proj.hs.desc2": "Includes family cloud (Nextcloud), AI-powered photo gallery (Immich), streaming (Jellyfin), password manager (Vaultwarden), ad-blocking (Pi-hole), VPN (WireGuard) and local AI (Gemma via Open WebUI). Custom monitoring dashboard with Scrutiny, Uptime Kuma and real-time RAID status.",
+        "proj.hs.badge": "23 active services · 7.5 TB",
+        "proj.tp.label": "Hardware restoration",
+        "proj.tp.desc": "Purchase and full restoration of a second-hand ThinkPad T480 for €215. Prior research to select the most repairable model (last ThinkPad with upgradeable RAM and dual battery). Battery replacement, 256GB NVMe SSD in M.2 2242 slot and Fedora Linux. Result: 15–18h real battery life, 512GB storage and competitive performance. Total investment: ~€374.",
+        "proj.ft.label": "Training · In progress",
+        "proj.ft.label1": "(in progress)",
+        "proj.ft.desc": "Cybersecurity certification in progress, focused on the fundamentals of network and systems security. Supplemented with the Ethical Hacking course at Salesians de Sarrià (6h).",
+        "skills.label": "Technical skills",
+        "skills.g1": "Systems & Servers", "skills.g2": "Networks & Virtualisation", "skills.g3": "Cloud & Databases",
+        "skills.g4": "Management & Monitoring", "skills.g5": "Programming & Scripting", "skills.g6": "Languages",
+        "skills.lang1": "Catalan — Native", "skills.lang2": "Spanish — Native", "skills.lang3": "English — B1",
+        "contact.title": "Work together?", "contact.sub": "Open to new professional opportunities and collaborations.",
+        "footer.text": "© 2026 Dídac Gallego Pérez · didac-gallego-perez.github.io"
+      }
+    };
+
+    let currentLang = localStorage.getItem("lang") || "ca";
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem("lang", lang);
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (t[lang] && t[lang][key] !== undefined) el.innerHTML = t[lang][key];
+      });
+      document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+      const btn = document.getElementById("btn-" + lang);
+      if (btn) btn.classList.add("active");
+      document.documentElement.lang = lang;
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll(".reveal");
+    reveals.forEach(el => el.classList.add("hidden"));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.remove("hidden");
+            entry.target.classList.add("visible");
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    reveals.forEach(el => observer.observe(el));
+
+    setLang(currentLang);
+  </script>
+
+</body>
+</html>
